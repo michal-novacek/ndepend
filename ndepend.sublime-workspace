@@ -1,0 +1,661 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"width",
+				"width"
+			],
+			[
+				"_das",
+				"_dashboardSettings"
+			],
+			[
+				"dash",
+				"dashboardSettingsDialog"
+			],
+			[
+				"dashboardSetting",
+				"dashboardSettingsDialog"
+			],
+			[
+				"_dash",
+				"_dashboardPresets"
+			],
+			[
+				"_",
+				"_dashboardSettings"
+			],
+			[
+				"getT",
+				"getTimezoneOffset"
+			],
+			[
+				"getFul",
+				"getFullyQualifiedDate"
+			],
+			[
+				"current",
+				"currentDomain"
+			],
+			[
+				"curren",
+				"currentDomain"
+			],
+			[
+				"all",
+				"all-reports"
+			],
+			[
+				"folder",
+				"folderCallback"
+			],
+			[
+				"tagCli",
+				"tagClickCallback"
+			],
+			[
+				"clicked",
+				"clickedTags"
+			],
+			[
+				"first",
+				"firstRun"
+			],
+			[
+				"application",
+				"applicationTitle"
+			],
+			[
+				"setBr",
+				"setBrandingStub"
+			],
+			[
+				"date",
+				"date"
+			],
+			[
+				"A",
+				"AbstractGroup"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "chart.html",
+			"settings":
+			{
+				"buffer_size": 5339,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 47.0,
+		"selected_items":
+		[
+			[
+				"install package",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/michal-novacek/Desktop/chart/data.js",
+		"/Users/michal-novacek/Desktop/chart/chart.html",
+		"/Users/michal-novacek/gdc-client/html/scripts/view/CaptchaView.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/apps/login.js",
+		"/Users/michal-novacek/gdc-client/httpd/gdc-client/client.conf",
+		"/Users/michal-novacek/gdc-client/html/index.html",
+		"/Users/michal-novacek/gdc-client/html/login.html",
+		"/Users/michal-novacek/gdc-client/Gruntfile.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/pages/registrationPage/registrationPage.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/pages/registrationPage/registrationFormController.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/pages/registrationPage/templates/RegistrationFormView.hbs",
+		"/Users/michal-novacek/gdc-client/html/registrationEmbed.html",
+		"/Users/michal-novacek/gdc-client/html/lib/goodstrap/GoodStrap.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/controllers/CaptchaController.js",
+		"/Users/michal-novacek/gdc-client/html/lib/goodstrap/GoodStrap-silver.css",
+		"/Users/michal-novacek/gdc-client/html/scripts/apps/registrationPage.js",
+		"/Users/michal-novacek/gdc-client/html/lib/ember-validations.js",
+		"/Users/michal-novacek/gdc-client/html/lib/ember/ember.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/widget/CheckBoxWidget.js",
+		"/Users/michal-novacek/gdc-client/html/test/app/Validations.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/validation/validation.js",
+		"/Users/michal-novacek/gdc-client/html/test/app/EmberValidations.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/util/util-base.js",
+		"/Users/michal-novacek/gdc-client/html/test/app/BottomLinks.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/ui/RegistrationForm.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/pages/registrationPage/registrationFormView.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/pages/registration.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/plugins/ValidatorPlugin.js",
+		"/Users/michal-novacek/gdc-client/tools/grunt/config.js",
+		"/Users/michal-novacek/gdc-client/tools/grunt/options/ember_handlebars.js",
+		"/Users/michal-novacek/gdc-client/tools/grunt/options/watch.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/upload/annotation/uploadAnnotationRoute.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/html-common.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/html-app.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/apps/index.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/templates/RegistrationFormView.js",
+		"/Users/michal-novacek/gdc-goodstrap/packages/Form/styles/themes/silver/Form.css",
+		"/Users/michal-novacek/gdc-goodstrap/packages/Form/styles/theme/Form.css",
+		"/Users/michal-novacek/gdc-client/html/scripts/dashboard/plugins/dashboardWidgetDD.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/dashboard/responders/dashboardPageEditResponder.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/dashboard/views/DashboardItemView.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/dashboard/views/DashboardWidget.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/dashboard/controllers/dashboardsController.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/dashboard/projectDashboardPage.js",
+		"/Users/michal-novacek/gdc-client/html/test/app/dashboardPageEditResponder.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/dashboard/views/SelectionBox.js",
+		"/Users/michal-novacek/gdc-client/html/sass/top.scss",
+		"/Users/michal-novacek/gdc-client/html/sass/footer.scss",
+		"/Users/michal-novacek/gdc-client/html/sass/main.scss",
+		"/Users/michal-novacek/gdc-client/html/scripts/templates/DashboardSettingsView.js",
+		"/Users/michal-novacek/gdc-client/html/handlebars/DashboardSettingsView.hbs",
+		"/Users/michal-novacek/gdc-client/html/scripts/dashboard/controllers/currentDashboardController.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/widget/Responder.js",
+		"/Users/michal-novacek/gdc-client/html/sass/component-projectDashboard.scss",
+		"/Users/michal-novacek/gdc-client/html/scripts/ui/ProjectDashboard.js",
+		"/Users/michal-novacek/gdc-client/html/sass/page-data.scss",
+		"/Users/michal-novacek/gdc-client/html/scripts/dashboard/responders/dashboardPageRespondersBase.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/dashboard/controllers/editDashboardController.js",
+		"/Users/michal-novacek/Desktop/NDepend_files/NDependReport.js",
+		"/Users/michal-novacek/Desktop/NDepend_files/NDependReport.css",
+		"/Users/michal-novacek/gdc-goodstrap/app/goodstrap-overlay.js",
+		"/Users/michal-novacek/gdc-goodstrap/app/index.js",
+		"/Users/michal-novacek/gdc-client/html/templates/ProjectDashboard.html",
+		"/Users/michal-novacek/gdc-client/html/scripts/pages/page.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/templates/root.js",
+		"/Users/michal-novacek/gdc-client/html/sass/gdc.scss",
+		"/Users/michal-novacek/gdc-client/html/templates/statusPage.html",
+		"/Users/michal-novacek/gdc-client/html/scripts/templates/statusPage.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/dashboard/views/dashboardEditBar.js",
+		"/Users/michal-novacek/gdc-client/html/upload.html",
+		"/Users/michal-novacek/gdc-client/html/registration.html",
+		"/Users/michal-novacek/gdc-client/html/projects.html",
+		"/Users/michal-novacek/gdc-client/html/passwordReset.html",
+		"/Users/michal-novacek/gdc-client/html/info.html",
+		"/Users/michal-novacek/gdc-client/html/embedded.html",
+		"/Users/michal-novacek/gdc-client/html/confirmRegistration.html",
+		"/Users/michal-novacek/gdc-client/html/confirmInvitation.html",
+		"/Users/michal-novacek/gdc-client/html/templates/root.html",
+		"/Users/michal-novacek/gdc-client/html/handlebars/RegistrationFormView.hbs",
+		"/Users/michal-novacek/gdc-client/html/test/app/GDCObject.js",
+		"/Users/michal-novacek/Desktop/GDC.sublime-project",
+		"/Users/michal-novacek/gdc-client/html/scripts/error_messages.js",
+		"/Users/michal-novacek/Sites/iframe/index.html",
+		"/private/var/folders/k2/xm5t7qs95m958hwdk_0ztqwr0000gn/T/af7c4886-e5e9-4d45-8591-aca0a08c06e1/etc/httpd/conf/httpd.conf",
+		"/private/var/folders/k2/xm5t7qs95m958hwdk_0ztqwr0000gn/T/af7c4886-e5e9-4d45-8591-aca0a08c06e1/etc/httpd/conf.d/zz90_gdc-client.conf",
+		"/private/var/folders/k2/xm5t7qs95m958hwdk_0ztqwr0000gn/T/af7c4886-e5e9-4d45-8591-aca0a08c06e1/etc/httpd/conf.d/gdc-client/client.conf",
+		"/Users/michal-novacek/gdc-client/html/scripts/templates/BottomLinksView.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/templates/RegistrationForm.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/pages/registrationPage/registrationPageTemplate.hbs",
+		"/Users/michal-novacek/gdc-client/html/templates/RegistrationForm.html",
+		"/Users/michal-novacek/gdc-client/html/scripts/application.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/pages/registrationEmbed.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/apps/registration.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/rjs-config.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/core.js",
+		"/private/var/folders/k2/xm5t7qs95m958hwdk_0ztqwr0000gn/T/af7c4886-e5e9-4d45-8591-aca0a08c06e1/opt/client/html/scripts-15557.94b3c50./pages/registration.js",
+		"/private/var/folders/k2/xm5t7qs95m958hwdk_0ztqwr0000gn/T/af7c4886-e5e9-4d45-8591-aca0a08c06e1/opt/client/html/scripts-15557.94b3c50./core.js",
+		"/private/var/folders/k2/xm5t7qs95m958hwdk_0ztqwr0000gn/T/af7c4886-e5e9-4d45-8591-aca0a08c06e1/opt/client/html/scripts-15557.94b3c50./core-min.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/datasources/AccountSettings.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/auth-bootstrap.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/datasources/datasources-account.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/history-switchProject.js",
+		"/Users/michal-novacek/gdc-client/html/sass/component-keyboardShortcuts.scss",
+		"/private/var/folders/k2/xm5t7qs95m958hwdk_0ztqwr0000gn/T/af7c4886-e5e9-4d45-8591-aca0a08c06e1/opt/client/html/scripts-15557.94b3c50./pages/registration-min.js",
+		"/Users/michal-novacek/Sites/ember/index.html",
+		"/Users/michal-novacek/gdc-client/html/scripts/apps/dashboard-init.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/datasources/DataSetResource.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/util/date.js",
+		"/Users/michal-novacek/gdc-client/html/test/app/Date.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/pages/dataPage/UpdatedUploadObjectGroup.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/pages/objectPage/ProcessedObjectGroup.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/history.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/pages/dataPage/dataPage.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/ui/AbstractGroup.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/pages/objectPage/FilenameObjectGroup.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/pages/objectPage/DefaultObjectGroup.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/pages/objectPage/UploadStatusObjectGroup.js",
+		"/Users/michal-novacek/gdc-client/html/test/view/IFrameWidget.js",
+		"/Users/michal-novacek/gdc-client/html/test/view/IFrameDashboardWidget.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/dashboard/views/IFrameWidget.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/ui/Domains.js",
+		"/Users/michal-novacek/gdc-client/html/test/app/Domains.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/pages/domainPage/domainPage.js",
+		"/Users/michal-novacek/gdc-client/html/test/app/domainPage.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/model/ChartSorting.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/ui/SpaceCloud.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/pages/domainPage/ReportGroupList.js",
+		"/Users/michal-novacek/gdc-client/html/scripts/ui/GroupList.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"<open folders>",
+			"RegistrationFormView.hbs",
+			"",
+			"<open folders>",
+			"<open files>,<open folders>",
+			"<open files>",
+			"",
+			"<open files>",
+			"<open folders>",
+			"/Users/michal-novacek/gdc-client",
+			"<open folders>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"GDC-api",
+			"GDC-datasources-Captcha",
+			"captcha",
+			"captcha-picture",
+			"prevent",
+			"fieldKeyUp",
+			"focusOut",
+			"fieldFocusOut",
+			"fieldFocusIn",
+			"'asdfgh'",
+			"GD",
+			"select",
+			"value",
+			"console",
+			"getPhone",
+			"GDC-validations",
+			"validations",
+			"RegistrationForm",
+			"presence",
+			"Validation",
+			"Ember.Validations",
+			"Ember.ValidationError",
+			"addMessage",
+			"GD.InputTextArea",
+			"{{controller.validationTarget.validationErrors[^}]+}",
+			"isTooltipVisible",
+			"TextField",
+			"FormMix",
+			"GD.ValidatorMixin",
+			"ember-validations",
+			"ember-",
+			"GDC-HTML",
+			"GDC-HTML-APP",
+			",\n",
+			"maxRight",
+			"maxright",
+			"maxRight",
+			"ProjectDashboard",
+			"DashboardWidget",
+			"dashboardPageEditResponder",
+			"DashboardItemView",
+			"maxRight",
+			"maxRight:",
+			"930",
+			"loadingFinished",
+			"dashboardsController",
+			"currentDashboardController",
+			"dashboardSwitcher",
+			"dashboardPageEditResponder",
+			"editDashboard",
+			"editDashboardController",
+			"dashboardPageEditResponder",
+			"editDashboard",
+			"embedDashboard",
+			"Edit, Embed or Export",
+			"gdc-appWidth",
+			" gdc-appWidth",
+			"gdc-appWidth ",
+			"gdc-appWidth",
+			"abovePageNode",
+			"gdc-appWidth",
+			"form",
+			"</label></div>",
+			"<div class=\"value\">",
+			"<div class=\"label\">",
+			"<label >",
+			"for=\"yui_[^\"]+\"",
+			" >",
+			"gdc:validationmessages=\"yui[^\"]+\"",
+			"id=\"yui[^\"]+\"",
+			"RJS_config",
+			"showProjects",
+			"GDC-datasources-account",
+			"localBootstrap",
+			"showProjects",
+			"SAMEORIGIN",
+			"GDC-HTML-APP",
+			"getFullYear",
+			"_data",
+			"getUpdatedDate",
+			"getDate",
+			"getDate: function(",
+			"getDate",
+			"this.domains",
+			"this.DOMAINS",
+			"}];",
+			"valueChanged",
+			"changed",
+			"this.Domains",
+			"test",
+			"changed",
+			"each",
+			"set",
+			"pageChange",
+			"changed",
+			"Callback",
+			"changed",
+			"publish",
+			"tagClickCallback",
+			"folderCallback",
+			"orderCallback",
+			"folderCallback",
+			"sortCa",
+			"defaultSort",
+			"sortBy",
+			"argument",
+			"this.tagClickCallback",
+			"this._sortCallback",
+			"options.sortCallback",
+			"this._sortCallback",
+			"folderCallback.arg",
+			"clickedTags",
+			"categoryFilter",
+			"SpaceCloud",
+			"CLOUD",
+			"options",
+			"_handleActionButtons",
+			"sortBar",
+			"groupDefs",
+			"sortElement",
+			"_sortBarClickHandler",
+			"sortElement",
+			"GroupList",
+			"setDDObject",
+			"ReportDD",
+			"_handleActionButtons",
+			"ReportGroupList",
+			"ReportDD"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"</label>",
+			"",
+			"<label>",
+			"",
+			">",
+			"",
+			"this.existingDomains",
+			"this.Domains",
+			"this.DOMAINS"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "chart.html",
+					"settings":
+					{
+						"buffer_size": 5339,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								430,
+								430
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": true,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.sftp":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"capt",
+				"scripts/view/CaptchaView.js"
+			],
+			[
+				"captcha",
+				"scripts/model/CaptchaModel.js"
+			],
+			[
+				"validator",
+				"scripts/plugins/ValidatorPlugin.js"
+			],
+			[
+				"dashboarddd",
+				"scripts/dashboard/plugins/dashboardWidgetDD.js"
+			],
+			[
+				"dashboardwidget",
+				"scripts/dashboard/views/DashboardWidget.js"
+			],
+			[
+				"dashboardpageeditresponder",
+				"scripts/dashboard/responders/dashboardPageEditResponder.js"
+			],
+			[
+				"respon",
+				"scripts/widget/Responder.js"
+			],
+			[
+				"registration",
+				"scripts/ui/RegistrationForm.js"
+			],
+			[
+				"showprojects",
+				"scripts/history-switchProject.js"
+			],
+			[
+				"iframe",
+				"scripts/dashboard/views/IFrameWidget.js"
+			],
+			[
+				"iframewi",
+				"test/view/IFrameWidget.js"
+			],
+			[
+				"call.",
+				"scripts/util/call.js"
+			],
+			[
+				"spacec",
+				"scripts/ui/SpaceCloud.js"
+			],
+			[
+				"uisettings",
+				"scripts/controllers/uiSettingsController.js"
+			],
+			[
+				"uisett",
+				"scripts/controllers/uiSettingsController.js"
+			],
+			[
+				"status",
+				"scripts/pages/status.js"
+			],
+			[
+				"object",
+				"scripts/pages/object.js"
+			],
+			[
+				"objects",
+				"scripts/ui/Objects.js"
+			],
+			[
+				"page-dat",
+				"sass/page-data.scss"
+			],
+			[
+				"uise",
+				"html/scripts/data/uiSettings/UiSettings.js"
+			],
+			[
+				"abstractgroup",
+				"html/.depmod/scripts/ui/AbstractGroup.js.depmod"
+			],
+			[
+				"datapagelist",
+				"html/test/view/DataPageList.js"
+			],
+			[
+				"groupname",
+				"node_modules/grunt/node_modules/findup-sync/node_modules/lodash/vendor/tar/vendor/mkdirp/index.js"
+			],
+			[
+				"listtable",
+				"html/lib/yui/3/build/tree-sortable/tree-sortable.js"
+			],
+			[
+				"uploadstable",
+				"node_modules/grunt/node_modules/findup-sync/node_modules/lodash/vendor/tar/vendor/block-stream/block-stream.js"
+			],
+			[
+				"uploadtime",
+				"html/scripts/upload/annotation/templates/UploadAnnotation.hbs"
+			],
+			[
+				"page-data",
+				"html/styles/page-data.css"
+			],
+			[
+				"formatdate",
+				"html/lib/yui/3/build/datatype-date-format/datatype-date-format-coverage.js"
+			],
+			[
+				"getdate",
+				"node_modules/grunt/node_modules/dateformat/lib/dateformat.js"
+			],
+			[
+				"date",
+				"html/test/app/Date.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 255.0,
+	"status_bar_visible": true
+}
