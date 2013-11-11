@@ -10,6 +10,9 @@
 <div id='chart1' class='chart'>
     <h4>Lines of Code</h4>
 </div>
+<div id='chart2' class='chart'>
+    <h4>Second Dataset</h4>
+</div>
 
 <script src="data.js" charset="utf-8"></script>
 <script>
@@ -73,24 +76,6 @@
             this.populateTooltip(labels, target);
             this.populateDefinitions(labels, lines, target);
 
-            var xAxis = d3.svg.axis()
-              .scale(x)
-              .orient("bottom")
-              .tickFormat(d3.time.format("%m/%d/%Y"));
-
-            vis.append("g")
-              .attr("class", "x axis")
-              .attr("transform", "translate(0, " + h + ")")
-              .call(xAxis);
-
-            var yAxis = d3.svg.axis()
-              .scale(y)
-              .orient("left");
-
-            vis.append("g")
-              .attr("class", "y axis")
-              .call(yAxis);
-
             $(lines).each(function(){
 
                 var lineLabel = this;
@@ -115,6 +100,40 @@
                 .on('mouseout', MND3.pointBlur);
             });
 
+            var xAxis = d3.svg.axis()
+              .outerTickSize(1)
+              .scale(x)
+              .orient("bottom")
+              .tickFormat(d3.time.format("%m/%d/%Y"));
+
+            vis.append("g")
+              .attr("class", "x axis")
+              .attr("transform", "translate(0, " + h + ")")
+              .call(xAxis);
+
+            var yAxis = d3.svg.axis()
+              .outerTickSize(1)
+              .scale(y)
+              .orient("left");
+
+            vis.append("g")
+              .attr("class", "y axis")
+              .call(yAxis);
+
+            vis.append("g")
+                .attr("class", "grid")
+                .attr("transform", "translate(0," + h + ")")
+                .call(xAxis
+                    .tickSize(- h, 0, 0)
+                    .tickFormat("")
+                )
+
+            vis.append("g")
+                .attr("class", "grid")
+                .call(yAxis
+                    .tickSize(- w, 0, 0)
+                    .tickFormat("")
+                )
         },
         pointFocus: function(data){
             var target = $(this).parents('.chart');
@@ -125,7 +144,7 @@
             var tooltipPosition = $(this).position();
 
             MND3.groupFocus(groupCoord, target);
-            MND3.updateTooltip(data, target, tooltipPosition);
+            MND3.updateTooltip(data, target, tooltipPosition, grp);
         },
         groupFocus: function(groupCoord, target){
             target.find(".point[cx='" + groupCoord + "']").attr('r', 5).attr('class','point active');
@@ -137,6 +156,7 @@
             line.attr("class", "line");
 
             MND3.groupBlur(target);
+            target.find('.tooltip .focused').removeClass('focused');
             target.find('.tooltip').hide();
         },
         groupBlur: function(target){
@@ -153,12 +173,15 @@
             });
             target.append(tooltip);
         },
-        updateTooltip: function(data, target, tooltipPosition){
+        updateTooltip: function(data, target, tooltipPosition, grp){
             target.find('.tooltip').css('top', tooltipPosition.top);
             target.find('.tooltip').css('left', tooltipPosition.left + 20);
 
             target.find('.tooltip .row').each(function(){
                 var group = $(this).attr('data-group');
+                if(grp === group){
+                    $(this).addClass('focused');
+                }
                 var val = data[group];
                 if(group === 'date'){
                     var format = d3.time.format("%m/%d/%Y %H:%M:%S");
@@ -185,6 +208,7 @@
 
     $(document).ready(function(){
         MND3.init('#chart1', ChartData);
+        MND3.init('#chart2', OtherChartData);
     });
 }(jQuery));
 </script>
@@ -208,6 +232,14 @@
     margin-top:2px;
     margin-right:6px;
 }
+.tooltip .focused{
+    font-weight:bold;
+}
+
+.grid{
+    stroke:#999999;
+}
+
 .line {
     fill: none;
     stroke-width: 3px;
@@ -239,6 +271,22 @@
 #chart1 .row[data-group="x2"] .color{background: #32CD32;}
 #chart1 .row[data-group="x3"] .color{background: #A9A9A9;}
 #chart1 .row[data-group="x4"] .color{background: #008000;}
+
+
+#chart2 .line[data-group="x1"]{stroke: #A9A9A9;}
+#chart2 .line[data-group="x2"]{stroke: #008000;}
+#chart2 .line[data-group="x3"]{stroke: #00BFFF;}
+#chart2 .line[data-group="x4"]{stroke: #32CD32;}
+
+#chart2 .point[data-group="x1"]{fill: #A9A9A9;}
+#chart2 .point[data-group="x2"]{fill: #008000;}
+#chart2 .point[data-group="x3"]{fill: #00BFFF;}
+#chart2 .point[data-group="x4"]{fill: #32CD32;}
+
+#chart2 .row[data-group="x1"] .color{background: #A9A9A9;}
+#chart2 .row[data-group="x2"] .color{background: #008000;}
+#chart2 .row[data-group="x3"] .color{background: #00BFFF;}
+#chart2 .row[data-group="x4"] .color{background: #32CD32;}
 
 </style>
 </body></html>
