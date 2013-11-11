@@ -59,16 +59,18 @@
                 h = 380,
                 pl = 90,
                 pr = 0,
-                pb = 30,
+                pb = 70,
                 pt = 15,
+                th = h+pt+pb,
+                tw = w+pr+pl,
                 y = d3.scale.linear().domain([minValue, maxValue]).range([h, 0]),
                 x = d3.time.scale().domain([minDate, maxDate]).range([0, w]);
 
             var vis = d3.select(target)
             .data([data])
             .append("svg:svg")
-            .attr("width", w + pl + pr)
-            .attr("height", h + pt + pb)
+            .attr("width", tw)
+            .attr("height", th)
             .append("svg:g")
             .attr("transform", "translate(" + pl + ", " + pt + ")");
 
@@ -76,6 +78,66 @@
             this.populateTooltip(labels, target);
             this.populateDefinitions(labels, lines, target);
 
+            var text = vis.selectAll("text")
+                        .data(data)
+                        .enter()
+                        .append("text");
+
+            var versionCount = 0;
+
+            var textLabels = text
+                 .attr("x", function(d) { return x(d.date); })
+                 .attr("y", function(d) { return th - 20; })
+                 .text( function (d) {
+                    if(d['annotation']){
+                        versionCount++;
+                        return d['annotation'];
+                    }
+                });
+
+            var axisTick = Math.floor(20/versionCount);
+
+            vis.append("svg:path")
+            .attr("class", "annotation")
+            .attr("d", d3.svg.line()
+                .x(function(d) { return x(d.date) })
+                .y(function(d) { if(d['annotation']) { versionCount-- }; return (th - 50 + (versionCount * axisTick)); })
+            );
+
+            var xAxis = d3.svg.axis()
+              .outerTickSize(2)
+              .scale(x)
+              .orient("bottom")
+              .tickFormat(d3.time.format("%m/%d/%Y"));
+
+            vis.append("g")
+              .attr("class", "x axis")
+              .attr("transform", "translate(0, " + h + ")")
+              .call(xAxis);
+
+            var yAxis = d3.svg.axis()
+              .outerTickSize(2)
+              .scale(y)
+              .orient("left");
+
+            vis.append("g")
+              .attr("class", "y axis")
+              .call(yAxis);
+
+            vis.append("g")
+                .attr("class", "grid")
+                .attr("transform", "translate(0," + h + ")")
+                .call(xAxis
+                    .tickSize(- h, 0, 0)
+                    .tickFormat("")
+                )
+
+            vis.append("g")
+                .attr("class", "grid")
+                .call(yAxis
+                    .tickSize(- w, 0, 0)
+                    .tickFormat("")
+                )
             $(lines).each(function(){
 
                 var lineLabel = this;
@@ -98,42 +160,9 @@
                 .attr("r", 3)
                 .on('mouseover', MND3.pointFocus)
                 .on('mouseout', MND3.pointBlur);
+
             });
 
-            var xAxis = d3.svg.axis()
-              .outerTickSize(1)
-              .scale(x)
-              .orient("bottom")
-              .tickFormat(d3.time.format("%m/%d/%Y"));
-
-            vis.append("g")
-              .attr("class", "x axis")
-              .attr("transform", "translate(0, " + h + ")")
-              .call(xAxis);
-
-            var yAxis = d3.svg.axis()
-              .outerTickSize(1)
-              .scale(y)
-              .orient("left");
-
-            vis.append("g")
-              .attr("class", "y axis")
-              .call(yAxis);
-
-            vis.append("g")
-                .attr("class", "grid")
-                .attr("transform", "translate(0," + h + ")")
-                .call(xAxis
-                    .tickSize(- h, 0, 0)
-                    .tickFormat("")
-                )
-
-            vis.append("g")
-                .attr("class", "grid")
-                .call(yAxis
-                    .tickSize(- w, 0, 0)
-                    .tickFormat("")
-                )
         },
         pointFocus: function(data){
             var target = $(this).parents('.chart');
@@ -192,17 +221,17 @@
             target.find('.tooltip').show();
         },
         populateDefinitions: function(labels, lines, target){
-
-            // var definitions = $("<div class='definitions'></div>");
-            // var row = $("<div class='row'><span class='color'></span><span class='label'></span></div>");
-            // $(lines).each(function(){
-            //     var row = $("<div class='row' data-group='"+this[0]+"'></div>");
-            //     var color = $("<span class='color'></span>");
-            //     var label = $("<span class='label'>"+this[1]+": </span>");
-            //     var value = $("<span class='value'></span>");
-            //     tooltip.append(row.append(color).append(label).append(value));
-            // });
-            // target.append(tooltip);
+            var definitions = $("<div class='definitions'></div>");
+            var row = $("<div class='row'><span class='color'></span><span class='label'></span></div>");
+            $(lines).each(function(){
+                var thisRow = row.clone();
+                thisRow.attr('data-group', this);
+                definitions.append(thisRow);
+            });
+            $(labels).each(function(){
+                definitions.find("[data-group='"+this[0]+"'] .label").html(this[1]);
+            });
+            target.append(definitions);
         }
     };
 
@@ -213,8 +242,9 @@
 }(jQuery));
 </script>
 <style type='text/css'>
-#chart{
+.chart{
     position: relative;
+    width:940px;
 }
 .tooltip{
     display: none;
@@ -224,7 +254,7 @@
     border: solid black 1px;
     border-radius: 5px;
 }
-.tooltip .color{
+.tooltip .color, .definitions .color{
     display:block;
     float:left;
     width:12px;
@@ -236,8 +266,17 @@
     font-weight:bold;
 }
 
+.definitions{
+    float:right;
+}
 .grid{
-    stroke:#999999;
+    stroke:#888888;
+}
+
+.annotation {
+    fill: none;
+    stroke: black;
+    stroke-width: 1px;
 }
 
 .line {
