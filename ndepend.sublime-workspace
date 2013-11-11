@@ -87,7 +87,15 @@
 			"file": "chart.html",
 			"settings":
 			{
-				"buffer_size": 5339,
+				"buffer_size": 7940,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "d3.v3.js",
+			"settings":
+			{
+				"buffer_size": 325498,
 				"line_ending": "Unix"
 			}
 		}
@@ -128,6 +136,8 @@
 	},
 	"file_history":
 	[
+		"/Users/michal-novacek/Sites/ndepend/d3.v3.js",
+		"/Users/michal-novacek/Sites/ndepend/data.js",
 		"/Users/michal-novacek/Desktop/chart/data.js",
 		"/Users/michal-novacek/Desktop/chart/chart.html",
 		"/Users/michal-novacek/gdc-client/html/scripts/view/CaptchaView.js",
@@ -253,9 +263,7 @@
 		"/Users/michal-novacek/gdc-client/html/scripts/pages/domainPage/domainPage.js",
 		"/Users/michal-novacek/gdc-client/html/test/app/domainPage.js",
 		"/Users/michal-novacek/gdc-client/html/scripts/model/ChartSorting.js",
-		"/Users/michal-novacek/gdc-client/html/scripts/ui/SpaceCloud.js",
-		"/Users/michal-novacek/gdc-client/html/scripts/pages/domainPage/ReportGroupList.js",
-		"/Users/michal-novacek/gdc-client/html/scripts/ui/GroupList.js"
+		"/Users/michal-novacek/gdc-client/html/scripts/ui/SpaceCloud.js"
 	],
 	"find":
 	{
@@ -263,7 +271,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			"<open folders>",
@@ -284,6 +292,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"#tooltip",
+			"ε",
 			"GDC-api",
 			"GDC-datasources-Captcha",
 			"captcha",
@@ -409,9 +419,7 @@
 			"GroupList",
 			"setDDObject",
 			"ReportDD",
-			"_handleActionButtons",
-			"ReportGroupList",
-			"ReportDD"
+			"_handleActionButtons"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -419,6 +427,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			".tooltip",
 			"",
 			"</label>",
 			"",
@@ -447,20 +456,20 @@
 					"file": "chart.html",
 					"settings":
 					{
-						"buffer_size": 5339,
+						"buffer_size": 7940,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								430,
-								430
+								4110,
+								4110
 							]
 						],
 						"settings":
 						{
-							"incomplete_sync": true,
+							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
 							"syntax": "Packages/HTML/HTML.tmLanguage",
@@ -468,7 +477,38 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1539.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "d3.v3.js",
+					"settings":
+					{
+						"buffer_size": 325498,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								283628,
+								283628
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 124100.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
