@@ -1,10 +1,10 @@
 var ChartData = {
 ChartLabels: [
     ['date', "Date"],
-    ['x1',"# Lines of Code"],
-    ['x2',"# Lines of Code Covered"],
-    ['x3',"# Lines of Code (NotMyCode)"],
-    ['x4',"# Lines of Comments"],
+    ['x1',"# Lines of Code",'area'],
+    ['x2',"# Lines of Code Covered",'area'],
+    ['x3',"# Lines of Code (NotMyCode)",'line'],
+    ['x4',"# Lines of Comments",'line'],
     ['tooltip',"Version"]
 ],
 ChartValues: [
@@ -617,10 +617,10 @@ ChartValues: [
 var OtherChartData = {
 ChartLabels: [
     ['date', "Date"],
-    ['x1',"# Lines of Code"],
-    ['x2',"# Lines of Code Covered"],
-    ['x3',"# Lines of Code (NotMyCode)"],
-    ['x4',"# Lines of Comments"],
+    ['x1',"# Lines of Code",'line'],
+    ['x2',"# Lines of Code Covered",'line'],
+    ['x3',"# Lines of Code (NotMyCode)",'line'],
+    ['x4',"# Lines of Comments",'area'],
     ['tooltip',"Version"]
 ],
 ChartValues: [

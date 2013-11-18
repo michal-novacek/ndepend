@@ -35,29 +35,34 @@
             $(labels).each(function(){
                 var exclude = ['date', 'tooltip', 'annotation'];
                 if (exclude.indexOf(this[0]) === -1) {
-                    lines.push(this[0]);
+                    lines.push([this[0], this[2], data[0][this[0]]]);
                 }
             });
 
-            var minValue = data[0][lines[0]],
-                maxValue = data[0][lines[0]];
+            var minValue = data[0][lines[0][0]],
+                maxValue = data[0][lines[0][0]];
 
             $(data).each(function(){
                 var _this = this;
                 $(lines).each(function(){
-                    var value = _this[this];
+                    var value = _this[this[0]];
                     if (value < minValue) {
                         minValue = value;
                     }
                     if (value > maxValue) {
                         maxValue = value;
                     }
+                    if (value > this[2]) {
+                        this[2] = value;
+                    }
                 });
             });
 
+            lines.sort(MND3.sortLayers);
+
             var w = 620,
                 h = 380,
-                pl = 90,
+                pl = 60,
                 pr = 0,
                 pb = 70,
                 pt = 15,
@@ -140,15 +145,30 @@
                 )
             $(lines).each(function(){
 
-                var lineLabel = this;
+                var lineLabel = this[0];
+                var lineType = this[1];
 
-                vis.append("svg:path")
-                .attr("class", "line")
-                .attr("data-group", lineLabel)
-                .attr("d", d3.svg.line()
-                    .x(function(d) { return x(d.date) })
-                    .y(function(d) { return y(d[lineLabel]) })
-                );
+                if (lineType === 'line') {
+                    vis.append("svg:path")
+                    .attr("class", "line")
+                    .attr("data-group", lineLabel)
+                    .attr("data-type", 'line')
+                    .attr("d", d3.svg.line()
+                        .x(function(d) { return x(d.date) })
+                        .y(function(d) { return y(d[lineLabel]) })
+                    )
+                }
+                if (lineType === 'area') {
+                    vis.append("svg:path")
+                    .attr("class", "area")
+                    .attr("data-group", lineLabel)
+                    .attr("data-type", 'area')
+                    .attr("d", d3.svg.area()
+                        .x(function(d) { return x(d.date) })
+                        .y0(function(d) { return y(minValue) })
+                        .y1(function(d) { return y(d[lineLabel]) })
+                    )
+                }
 
                 vis.selectAll("circle.line")
                 .data(data)
@@ -167,8 +187,15 @@
         pointFocus: function(data){
             var target = $(this).parents('.chart');
             var grp = $(this).attr('data-group');
+            var type = $(this).attr('data-type');
             var line = target.find("path[data-group='" + grp + "']");
-            line.attr("class", "active line");
+            if (type === 'line') {
+                line.attr("class", "active line");
+            }
+            if (type === 'area') {
+                line.attr("class", "active area");
+            }
+
             var groupCoord = $(this).attr('cx');
             var tooltipPosition = $(this).position();
 
@@ -181,8 +208,14 @@
         pointBlur: function(){
             var target = $(this).parents('.chart');
             var grp = $(this).attr('data-group');
+            var type = $(this).attr('data-type');
             var line = target.find("path[data-group='" + grp + "']");
-            line.attr("class", "line");
+            if (type === 'line') {
+                line.attr("class", "active line");
+            }
+            if (type === 'area') {
+                line.attr("class", "active area");
+            }
 
             MND3.groupBlur(target);
             target.find('.tooltip .focused').removeClass('focused');
@@ -225,13 +258,20 @@
             var row = $("<div class='row'><span class='color'></span><span class='label'></span></div>");
             $(lines).each(function(){
                 var thisRow = row.clone();
-                thisRow.attr('data-group', this);
+                thisRow.attr('data-group', this[0]);
                 definitions.append(thisRow);
             });
             $(labels).each(function(){
                 definitions.find("[data-group='"+this[0]+"'] .label").html(this[1]);
             });
             target.append(definitions);
+        },
+        sortLayers: function(a,b) {
+          if (a[2] < b[2])
+             return 1;
+          if (a[2] > b[2])
+            return -1;
+          return 0;
         }
     };
 
@@ -245,6 +285,10 @@
 .chart{
     position: relative;
     width:940px;
+    float:left;
+}
+.chart > svg{
+    float:left;
 }
 .tooltip{
     display: none;
@@ -287,6 +331,14 @@
     stroke-width: 5px;
 }
 
+.area {
+    fill-opacity: 0.6;
+    stroke-width: 3px;
+}
+.area.active, .area:hover {
+    stroke-width: 5px;
+}
+
 .point {
     stroke: none;
     fill-opacity: 0;
@@ -300,6 +352,11 @@
 #chart1 .line[data-group="x2"]{stroke: #32CD32;}
 #chart1 .line[data-group="x3"]{stroke: #A9A9A9;}
 #chart1 .line[data-group="x4"]{stroke: #008000;}
+
+#chart1 .area[data-group="x1"]{stroke: #00BFFF; fill:#00BAFA;}
+#chart1 .area[data-group="x2"]{stroke: #32CD32; fill:#22BD22;}
+#chart1 .area[data-group="x3"]{stroke: #A9A9A9; fill:#A4A4A4;}
+#chart1 .area[data-group="x4"]{stroke: #008000; fill:#006000;}
 
 #chart1 .point[data-group="x1"]{fill: #00BFFF;}
 #chart1 .point[data-group="x2"]{fill: #32CD32;}
@@ -316,6 +373,11 @@
 #chart2 .line[data-group="x2"]{stroke: #008000;}
 #chart2 .line[data-group="x3"]{stroke: #00BFFF;}
 #chart2 .line[data-group="x4"]{stroke: #32CD32;}
+
+#chart2 .area[data-group="x1"]{stroke: #A9A9A9; fill:#A4A4A4;}
+#chart2 .area[data-group="x2"]{stroke: #008000; fill:#006000;}
+#chart2 .area[data-group="x3"]{stroke: #00BFFF; fill:#00BAFA;}
+#chart2 .area[data-group="x4"]{stroke: #32CD32; fill:#22BD22;}
 
 #chart2 .point[data-group="x1"]{fill: #A9A9A9;}
 #chart2 .point[data-group="x2"]{fill: #008000;}

@@ -87,7 +87,7 @@
 			"file": "chart.html",
 			"settings":
 			{
-				"buffer_size": 7940,
+				"buffer_size": 10540,
 				"line_ending": "Unix"
 			}
 		},
@@ -96,6 +96,14 @@
 			"settings":
 			{
 				"buffer_size": 325498,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "data.js",
+			"settings":
+			{
+				"buffer_size": 24898,
 				"line_ending": "Unix"
 			}
 		}
@@ -136,8 +144,8 @@
 	},
 	"file_history":
 	[
-		"/Users/michal-novacek/Sites/ndepend/d3.v3.js",
 		"/Users/michal-novacek/Sites/ndepend/data.js",
+		"/Users/michal-novacek/Sites/ndepend/d3.v3.js",
 		"/Users/michal-novacek/Desktop/chart/data.js",
 		"/Users/michal-novacek/Desktop/chart/chart.html",
 		"/Users/michal-novacek/gdc-client/html/scripts/view/CaptchaView.js",
@@ -271,7 +279,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"<open folders>",
@@ -456,15 +464,15 @@
 					"file": "chart.html",
 					"settings":
 					{
-						"buffer_size": 7940,
+						"buffer_size": 10540,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4110,
-								4110
+								1931,
+								1931
 							]
 						],
 						"settings":
@@ -477,7 +485,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1539.0,
+						"translation.y": 791.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -508,7 +516,38 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 124100.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "data.js",
+					"settings":
+					{
+						"buffer_size": 24898,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
