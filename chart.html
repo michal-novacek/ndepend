@@ -145,12 +145,19 @@
                 ticks = [d3.time.year, 1];
             }
 
+            var dateFormat;
+            if (timeDiff < 2920) {
+                dateFormat = "%m/%d/%Y";
+            } else {
+                dateFormat = "%m/%Y";
+            }
+
             var xAxis = d3.svg.axis()
               .outerTickSize(2)
               .scale(x)
               .orient("bottom")
               .ticks(ticks[0], ticks[1])
-              .tickFormat(d3.time.format("%m/%d/%Y"));
+              .tickFormat(d3.time.format(dateFormat));
 
             vis.append("g")
               .attr("class", "x axis")
