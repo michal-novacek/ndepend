@@ -13,6 +13,9 @@
 <div id='chart2' class='chart'>
     <h4>Second Dataset</h4>
 </div>
+<div id='chart3' class='chart'>
+    <h4>Small Dataset</h4>
+</div>
 
 <script src="data.js" charset="utf-8"></script>
 <script>
@@ -42,6 +45,9 @@
             var minValue = data[0][lines[0][0]],
                 maxValue = data[0][lines[0][0]];
 
+            var minDate = data[0]['date'],
+                maxDate = data[0]['date'];
+
             $(data).each(function(){
                 var _this = this;
                 $(lines).each(function(){
@@ -56,6 +62,13 @@
                         this[2] = value;
                     }
                 });
+                var date = this['date'];
+                if (date < minDate) {
+                    minDate = date;
+                }
+                if (date > maxDate) {
+                    maxDate = date;
+                }
             });
 
             lines.sort(MND3.sortLayers);
@@ -109,10 +122,34 @@
                 .y(function(d) { if(d['annotation']) { versionCount-- }; return (th - 50 + (versionCount * axisTick)); })
             );
 
+            var timeDiff = (maxDate - minDate) / 1000 / 60 / 60 / 24;
+
+            // The following time intervals are considered for automatic ticks:
+
+            // 1-, 5-, 15- and 30-second.
+            // 1-, 5-, 15- and 30-minute.
+            // 1-, 3-, 6- and 12-hour.
+            // 1- and 2-day.
+            // 1-week.
+            // 1- and 3-month.
+            // 1-year.
+
+            var ticks;
+            if (timeDiff < 60) {
+                ticks = [d3.time.week, 1];
+            } else if (timeDiff < 180) {
+                ticks = [d3.time.month, 1];
+            } else if (timeDiff < 730) {
+                ticks = [d3.time.month, 3];
+            } else {
+                ticks = [d3.time.year, 1];
+            }
+
             var xAxis = d3.svg.axis()
               .outerTickSize(2)
               .scale(x)
               .orient("bottom")
+              .ticks(ticks[0], ticks[1])
               .tickFormat(d3.time.format("%m/%d/%Y"));
 
             vis.append("g")
@@ -278,6 +315,7 @@
     $(document).ready(function(){
         MND3.init('#chart1', ChartData);
         MND3.init('#chart2', OtherChartData);
+        MND3.init('#chart2', SmallChartData);
     });
 }(jQuery));
 </script>
@@ -348,25 +386,25 @@
     fill-opacity: 1;
 }
 
-#chart1 .line[data-group="x1"]{stroke: #00BFFF;}
-#chart1 .line[data-group="x2"]{stroke: #32CD32;}
-#chart1 .line[data-group="x3"]{stroke: #A9A9A9;}
-#chart1 .line[data-group="x4"]{stroke: #008000;}
+.line[data-group="x1"]{stroke: #00BFFF;}
+.line[data-group="x2"]{stroke: #32CD32;}
+.line[data-group="x3"]{stroke: #A9A9A9;}
+.line[data-group="x4"]{stroke: #008000;}
 
-#chart1 .area[data-group="x1"]{stroke: #00BFFF; fill:#00BAFA;}
-#chart1 .area[data-group="x2"]{stroke: #32CD32; fill:#22BD22;}
-#chart1 .area[data-group="x3"]{stroke: #A9A9A9; fill:#A4A4A4;}
-#chart1 .area[data-group="x4"]{stroke: #008000; fill:#006000;}
+.area[data-group="x1"]{stroke: #00BFFF; fill:#00BAFA;}
+.area[data-group="x2"]{stroke: #32CD32; fill:#22BD22;}
+.area[data-group="x3"]{stroke: #A9A9A9; fill:#A4A4A4;}
+.area[data-group="x4"]{stroke: #008000; fill:#006000;}
 
-#chart1 .point[data-group="x1"]{fill: #00BFFF;}
-#chart1 .point[data-group="x2"]{fill: #32CD32;}
-#chart1 .point[data-group="x3"]{fill: #A9A9A9;}
-#chart1 .point[data-group="x4"]{fill: #008000;}
+.point[data-group="x1"]{fill: #00BFFF;}
+.point[data-group="x2"]{fill: #32CD32;}
+.point[data-group="x3"]{fill: #A9A9A9;}
+.point[data-group="x4"]{fill: #008000;}
 
-#chart1 .row[data-group="x1"] .color{background: #00BFFF;}
-#chart1 .row[data-group="x2"] .color{background: #32CD32;}
-#chart1 .row[data-group="x3"] .color{background: #A9A9A9;}
-#chart1 .row[data-group="x4"] .color{background: #008000;}
+.row[data-group="x1"] .color{background: #00BFFF;}
+.row[data-group="x2"] .color{background: #32CD32;}
+.row[data-group="x3"] .color{background: #A9A9A9;}
+.row[data-group="x4"] .color{background: #008000;}
 
 
 #chart2 .line[data-group="x1"]{stroke: #A9A9A9;}
