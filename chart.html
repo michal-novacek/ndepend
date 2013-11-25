@@ -3,6 +3,7 @@
 
 <script src="d3.v3.js" charset="utf-8"></script>
 <script src="jquery-1.10.2.js" charset="utf-8"></script>
+<script src="jquery-nearest.js" charset="utf-8"></script>
 
 </head><body>
 
@@ -26,6 +27,14 @@
             if (!obj) {
                 console.log('No data available');
                 return false;
+            }
+
+            if (!MND3.initiated) {
+                $(document).mousemove(function(event) {
+                    MND3.x = event.pageX;
+                    MND3.y = event.pageY;
+                });
+                MND3.initiated = 1;
             }
 
             var data = obj.ChartValues;
@@ -201,6 +210,8 @@
                         .x(function(d) { return x(d.date) })
                         .y(function(d) { return y(d[lineLabel]) })
                     )
+                    .on('mouseover', MND3.nearestPointFocus)
+                    .on('mousemove', MND3.nearestPointFocus);
                 }
                 if (lineType === 'area') {
                     vis.append("svg:path")
@@ -212,6 +223,8 @@
                         .y0(function(d) { return y(minValue) })
                         .y1(function(d) { return y(d[lineLabel]) })
                     )
+                    .on('mouseover', MND3.nearestPointFocus)
+                    .on('mousemove', MND3.nearestPointFocus);
                 }
 
                 vis.selectAll("circle.line")
@@ -219,6 +232,9 @@
                 .enter().append("svg:circle")
                 .attr("class", "point")
                 .attr("data-group", lineLabel)
+                .attr("data-value", function(d) { return d[lineLabel] })
+                .attr("data-date", function(d) { return d.date })
+                .attr("data-version", function(d) { return d['tooltip'] })
                 .attr("cx", function(d) { return x(d.date) })
                 .attr("cy", function(d) { return y(d[lineLabel]) })
                 .attr("r", 3)
@@ -228,10 +244,20 @@
             });
 
         },
-        pointFocus: function(data){
+        nearestPointFocus: function() {
             var target = $(this).parents('.chart');
             var grp = $(this).attr('data-group');
-            var type = $(this).attr('data-type');
+            var nearest = $.nearest({x: MND3.x, y: MND3.y}, target.find(".point[data-group='" + grp + "']")).first();
+            if (nearest[0] !== MND3.last) {
+                MND3.groupBlur(target);
+                MND3.pointFocus({}, null, null, nearest[0]);
+            }
+        },
+        pointFocus: function(data, useless, useless2, _this){
+            _this = _this || this;
+            var target = $(_this).parents('.chart');
+            var grp = $(_this).attr('data-group');
+            var type = $(_this).attr('data-type');
             var line = target.find("path[data-group='" + grp + "']");
             if (type === 'line') {
                 line.attr("class", "active line");
@@ -240,14 +266,14 @@
                 line.attr("class", "active area");
             }
 
-            var groupCoord = $(this).attr('cx');
-            var tooltipPosition = $(this).position();
+            var groupCoord = $(_this).attr('data-date');
+            var tooltipPosition = $(_this).position();
 
             MND3.groupFocus(groupCoord, target);
-            MND3.updateTooltip(data, target, tooltipPosition, grp);
+            MND3.updateTooltip(groupCoord, target, tooltipPosition, grp);
         },
         groupFocus: function(groupCoord, target){
-            target.find(".point[cx='" + groupCoord + "']").attr('r', 5).attr('class','point active');
+            target.find(".point[data-date='" + groupCoord + "']").attr('r', 5).attr('class','point active');
         },
         pointBlur: function(){
             var target = $(this).parents('.chart');
@@ -262,11 +288,11 @@
             }
 
             MND3.groupBlur(target);
-            target.find('.tooltip .focused').removeClass('focused');
-            target.find('.tooltip').hide();
         },
         groupBlur: function(target){
             target.find('.point.active').attr('r', 3).attr('class','point');
+            target.find('.tooltip .focused').removeClass('focused');
+            target.find('.tooltip').hide();
         },
         populateTooltip: function(labels, target){
             var tooltip = $("<div class='tooltip'></div>");
@@ -279,22 +305,32 @@
             });
             target.append(tooltip);
         },
-        updateTooltip: function(data, target, tooltipPosition, grp){
+        updateTooltip: function(groupCoord, target, tooltipPosition, grp){
             target.find('.tooltip').css('top', tooltipPosition.top);
             target.find('.tooltip').css('left', tooltipPosition.left + 20);
 
-            target.find('.tooltip .row').each(function(){
+            target.find('.tooltip .row').hide();
+
+            var date = new Date(groupCoord);
+            var format = d3.time.format("%m/%d/%Y %H:%M:%S");
+            date = date ? format(date) : 'N/A';
+            target.find(".tooltip .row[data-group='date']").show().find('.value').text(date);
+
+            var one = target.find(".point[data-date='" + groupCoord + "']").first();
+            var version = one.attr('data-version');
+            target.find(".tooltip .row[data-group='tooltip']").show().find('.value').text(version);
+
+            target.find(".point[data-date='" + groupCoord + "']").each(function(){
                 var group = $(this).attr('data-group');
+                var row = target.find(".tooltip .row[data-group='"+ group +"']");
                 if(grp === group){
-                    $(this).addClass('focused');
+                    row.addClass('focused');
                 }
-                var val = data[group];
-                if(group === 'date'){
-                    var format = d3.time.format("%m/%d/%Y %H:%M:%S");
-                    val = val ? format(val) : 'N/A';
-                }
-                $(this).find(".value").text(val);
+                var val = $(this).attr('data-value');
+                row.find(".value").text(val);
+                row.show();
             });
+
             target.find('.tooltip').show();
         },
         populateDefinitions: function(labels, lines, target){
@@ -316,13 +352,17 @@
           if (a[2] > b[2])
             return -1;
           return 0;
-        }
+        },
+        x:0,
+        y:0,
+        last:{},
+        initiated:0
     };
 
     $(document).ready(function(){
         MND3.init('#chart1', ChartData);
         MND3.init('#chart2', OtherChartData);
-        MND3.init('#chart2', SmallChartData);
+        MND3.init('#chart3', SmallChartData);
     });
 }(jQuery));
 </script>
