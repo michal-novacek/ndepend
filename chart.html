@@ -247,7 +247,11 @@
         nearestPointFocus: function() {
             var target = $(this).parents('.chart');
             var grp = $(this).attr('data-group');
-            var nearest = $.nearest({x: MND3.x, y: MND3.y}, target.find(".point[data-group='" + grp + "']")).first();
+            var nearest = $.nearest(
+                {x: MND3.x, y: MND3.y},
+                target.find(".point[data-group='" + grp + "']"),
+                {onlyX: true}
+            ).first();
             if (nearest[0] !== MND3.last) {
                 MND3.groupBlur(target);
                 MND3.pointFocus({}, null, null, nearest[0]);
