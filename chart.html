@@ -271,7 +271,9 @@
             }
 
             var groupCoord = $(_this).attr('data-date');
-            var tooltipPosition = $(_this).position();
+            var circleOffset = $(_this).offset();
+            var chartOffset = $(target).offset();
+            var tooltipPosition = {top: circleOffset.top - chartOffset.top, left: circleOffset.left - chartOffset.left};
 
             MND3.groupFocus(groupCoord, target);
             MND3.updateTooltip(groupCoord, target, tooltipPosition, grp);
@@ -371,12 +373,13 @@
 }(jQuery));
 </script>
 <style type='text/css'>
-.chart{
+.chart {
     position: relative;
     width:940px;
     float:left;
 }
 .chart > svg{
+    position:relative;
     float:left;
 }
 .tooltip{

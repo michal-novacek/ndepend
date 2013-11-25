@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"date",
+				"date"
+			],
+			[
 				"width",
 				"width"
 			],
@@ -72,10 +76,6 @@
 				"setBrandingStub"
 			],
 			[
-				"date",
-				"date"
-			],
-			[
 				"A",
 				"AbstractGroup"
 			]
@@ -87,7 +87,7 @@
 			"file": "chart.html",
 			"settings":
 			{
-				"buffer_size": 12657,
+				"buffer_size": 15831,
 				"line_ending": "Unix"
 			}
 		},
@@ -103,7 +103,23 @@
 			"file": "data.js",
 			"settings":
 			{
-				"buffer_size": 24954,
+				"buffer_size": 26771,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "jquery-nearest.js",
+			"settings":
+			{
+				"buffer_size": 9618,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/michal-novacek/jquery-nearest/jquery.nearest.js",
+			"settings":
+			{
+				"buffer_size": 7975,
 				"line_ending": "Unix"
 			}
 		}
@@ -456,7 +472,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -464,15 +480,15 @@
 					"file": "chart.html",
 					"settings":
 					{
-						"buffer_size": 12657,
+						"buffer_size": 15831,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10747,
-								10747
+								0,
+								15831
 							]
 						],
 						"settings":
@@ -485,7 +501,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4679.0,
+						"translation.y": 3543.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -526,15 +542,15 @@
 					"file": "data.js",
 					"settings":
 					{
-						"buffer_size": 24954,
+						"buffer_size": 26771,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12703,
-								12703
+								25076,
+								25076
 							]
 						],
 						"settings":
@@ -547,7 +563,68 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 8975.0,
+						"translation.y": 18139.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "jquery-nearest.js",
+					"settings":
+					{
+						"buffer_size": 9618,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4670,
+								4312
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1364.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/michal-novacek/jquery-nearest/jquery.nearest.js",
+					"settings":
+					{
+						"buffer_size": 7975,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3890,
+								3890
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1199.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
