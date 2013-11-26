@@ -87,7 +87,7 @@
 			"file": "chart.html",
 			"settings":
 			{
-				"buffer_size": 15831,
+				"buffer_size": 17124,
 				"line_ending": "Unix"
 			}
 		},
@@ -472,7 +472,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -480,15 +480,15 @@
 					"file": "chart.html",
 					"settings":
 					{
-						"buffer_size": 15831,
+						"buffer_size": 17124,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								15831
+								6017,
+								4230
 							]
 						],
 						"settings":
@@ -501,7 +501,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3543.0,
+						"translation.y": 1908.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -624,7 +624,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1199.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

@@ -131,10 +131,7 @@
                 .y(function(d) { if(d['annotation']) { versionCount-- }; return (th - 50 + (versionCount * axisTick)); })
             );
 
-            var timeDiff = (maxDate - minDate) / 1000 / 60 / 60 / 24;
-
             // The following time intervals are considered for automatic ticks:
-
             // 1-, 5-, 15- and 30-second.
             // 1-, 5-, 15- and 30-minute.
             // 1-, 3-, 6- and 12-hour.
@@ -144,18 +141,45 @@
             // 1-year.
 
             var ticks;
-            if (timeDiff < 60) {
+            var timeDiff = (maxDate - minDate) / 60 / 60 / 24;
+
+            // In timeDiff one day equals 1000
+            if (timeDiff < 10) {  // 10 is like 7 minutes, tick every minute  (1440 minutes in a day)
+                ticks = [d3.time.minute, 1];
+
+            } else if (timeDiff < 250) {  // 250 is like 6h, tick every hour
+                ticks = [d3.time.hour, 1];
+
+            } else if (timeDiff < 6*1000) { // 6 days, tick every day
+                ticks = [d3.time.day, 1];
+
+            } else if (timeDiff < 3*7*1000) { // 3 weeks, tick every 3 days
+                ticks = [d3.time.day, 3];
+
+            } else if (timeDiff < 6*7*1000) { // 6 weeks, tick every week
                 ticks = [d3.time.week, 1];
-            } else if (timeDiff < 180) {
+
+            } else if (timeDiff < 3*30*1000) { // 3 months, tick every 2 weeks
+                ticks = [d3.time.week, 2];
+
+            } else if (timeDiff < 6*30*1000) { // 6 monthes, tick every month
                 ticks = [d3.time.month, 1];
-            } else if (timeDiff < 730) {
+
+            } else if (timeDiff < 18*30*1000) { // 18 monthes, tick every 3 monthes
                 ticks = [d3.time.month, 3];
-            } else {
+
+            } else if (timeDiff < 36*30*1000) { // 36 monthes, tick every 6 monthes
+                ticks = [d3.time.month, 6];
+
+            } else if (timeDiff < 10*365*1000) { // 10 years, tick every year
                 ticks = [d3.time.year, 1];
+
+            } else { // Tick every 3 years
+                ticks = [d3.time.year, 3];
             }
 
             var dateFormat;
-            if (timeDiff < 2920) {
+            if (timeDiff < 36*30*1000) { // 36 months, 3 years, show the day!
                 dateFormat = "%m/%d/%Y";
             } else {
                 dateFormat = "%m/%Y";
@@ -211,7 +235,8 @@
                         .y(function(d) { return y(d[lineLabel]) })
                     )
                     .on('mouseover', MND3.nearestPointFocus)
-                    .on('mousemove', MND3.nearestPointFocus);
+                    .on('mousemove', MND3.nearestPointFocus)
+                    .on('click', MND3.lockTooltip);
                 }
                 if (lineType === 'area') {
                     vis.append("svg:path")
@@ -224,7 +249,8 @@
                         .y1(function(d) { return y(d[lineLabel]) })
                     )
                     .on('mouseover', MND3.nearestPointFocus)
-                    .on('mousemove', MND3.nearestPointFocus);
+                    .on('mousemove', MND3.nearestPointFocus)
+                    .on('click', MND3.lockTooltip);
                 }
 
                 vis.selectAll("circle.line")
@@ -239,14 +265,17 @@
                 .attr("cy", function(d) { return y(d[lineLabel]) })
                 .attr("r", 3)
                 .on('mouseover', MND3.pointFocus)
-                .on('mouseout', MND3.pointBlur);
-
+                .on('click', MND3.lockTooltip);
             });
 
         },
-        nearestPointFocus: function() {
-            var target = $(this).parents('.chart');
-            var grp = $(this).attr('data-group');
+        nearestPointFocus: function(useless, useless2, useless3, _this) {
+            _this = _this || this;
+            var target = $(_this).parents('.chart');
+            if (target.hasClass('locked')) {
+                return false;
+            }
+            var grp = $(_this).attr('data-group');
             var nearest = $.nearest(
                 {x: MND3.x, y: MND3.y},
                 target.find(".point[data-group='" + grp + "']"),
@@ -257,9 +286,13 @@
                 MND3.pointFocus({}, null, null, nearest[0]);
             }
         },
-        pointFocus: function(data, useless, useless2, _this){
+        pointFocus: function(data, useless, useless2, _this) {
             _this = _this || this;
             var target = $(_this).parents('.chart');
+            if (target.hasClass('locked')) {
+                return false;
+            }
+            MND3.groupBlur(target);
             var grp = $(_this).attr('data-group');
             var type = $(_this).attr('data-type');
             var line = target.find("path[data-group='" + grp + "']");
@@ -301,13 +334,17 @@
             target.find('.tooltip').hide();
         },
         populateTooltip: function(labels, target){
-            var tooltip = $("<div class='tooltip'></div>");
+            var tooltip = $("<div class='tooltip'><div class='close'>x</div></div>");
             var row = $("<div class='row'><span class='color'></span><span class='label'></span><span class='value'></span></div>");
             $(labels).each(function(){
                 var thisRow = row.clone();
                 thisRow.attr('data-group', this[0]);
                 thisRow.find('.label').html(this[1] + ' : ');
                 tooltip.append(thisRow);
+            });
+            $(target).on('click', '.tooltip .close', function() {
+                MND3.groupBlur(target);
+                MND3.unlockTooltip(target);
             });
             target.append(tooltip);
         },
@@ -338,6 +375,18 @@
             });
 
             target.find('.tooltip').show();
+        },
+        lockTooltip: function() {
+            var target = $(this).parents('.chart');
+            if (target.hasClass('locked')) {
+                MND3.unlockTooltip(target);
+                MND3.nearestPointFocus(null, null, null, this);
+            } else {
+                target.addClass('locked');
+            }
+        },
+        unlockTooltip: function(target) {
+            target.removeClass('locked');
         },
         populateDefinitions: function(labels, lines, target){
             var definitions = $("<div class='definitions'></div>");
@@ -401,7 +450,15 @@
 .tooltip .focused{
     font-weight:bold;
 }
-
+.tooltip .close{
+    position: absolute;
+    top:0;
+    right:5px;
+    cursor:pointer;
+}
+.tooltip .close:hover{
+    font-weight:bold;
+}
 .definitions{
     float:right;
 }

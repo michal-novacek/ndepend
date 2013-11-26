@@ -1242,7 +1242,7 @@ ChartLabels: [
     ['x1',"# Lines of Code",'line'],
     ['x2',"# Lines of Code Covered",'line'],
     ['x3',"# Lines of Code (NotMyCode)",'line'],
-    ['x4',"# Lines of Comments",'area'],
+    ['x4',"# Lines of Comments",'line'],
     ['tooltip',"Version"]
 ],
 ChartValues: [
